@@ -1,21 +1,38 @@
 #!/bin/bash
 #
 # 任意仓库的安装脚本
-set -euxo pipefail
+set -euo pipefail
 
 # 修改 REPO 的值, 即可
-readonly DOMAIN='github.com'
-readonly OWNER='yzaj'
-readonly REPO='phone'
+readonly REPO='adb'
 readonly CMD='git'
+readonly MINTTY='Cygwin-Terminal.ico'
+readonly E_USE_MINTTY=1
 
-readonly url="https://${DOMAIN}/${OWNER}/${REPO}.git"
-readonly repodir="/${OWNER}/${REPO}"
-readonly src="/etc/profile.d/${OWNER}-${REPO}.sh"
+err() {
+  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
+}
 
-if [[ "${REPO}" == "yzaj" || "${REPO}" == "log" ]]; then
-  exit 1
-fi
+readonly url="https://github.com/yzaj/${REPO}.git"
+readonly repodir="/yzaj/${REPO}"
+readonly tempdir="/yzaj/temp/${REPO}"
+readonly src="/etc/profile.d/yzaj-${REPO}.sh"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if ! type "${CMD}"; then
   apt-cyg install "${CMD}"
